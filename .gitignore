@@ -1,0 +1,12 @@
+node_modules
+coverage
+.terraform
+*.tfstate*
+*.tfvars
+
+.DS_Store
+.vscode
+build/
+public/
+
+event-pixelphraser/.env
