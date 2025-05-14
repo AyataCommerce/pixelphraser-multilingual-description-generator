@@ -1,7 +1,12 @@
 import { expect } from '@jest/globals';
 import request from 'supertest';
-import app from '../../src/app';
-import { readConfiguration } from '../../src/utils/config.utils';
+
+// Mock environment variables before importing app
+jest.mock('../../src/config/ai.config', () => ({
+  BASE64_ENCODED_GCP_SERVICE_ACCOUNT: 'mock-base64-service-account',
+  GENERATIVE_AI_API_KEY: 'mock-ai-api-key',
+  // Add any other config exports needed from this file
+}));
 
 // Mock configuration
 jest.mock('../../src/utils/config.utils', () => ({
@@ -13,6 +18,10 @@ jest.mock('../../src/utils/config.utils', () => ({
     REGION: "region"
   })
 }));
+
+// Now import the app after the mocks are set up
+import app from '../../src/app';
+import { readConfiguration } from '../../src/utils/config.utils';
 
 describe('Testing router', () => {
   beforeEach(() => {
