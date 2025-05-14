@@ -93,13 +93,13 @@ This connector is designed to automate the generation of product descriptions ba
 ### 6.1 CommerceTools Account and API Keys
 1. Navigate to **Settings > Developer settings > Create new API client**.
 2. Capture the following details:
-   - `CTP_PROJECT_KEY`
-   - `CTP_CLIENT_SECRET`
-   - `CTP_CLIENT_ID`
-   - `CTP_AUTH_URL`
-   - `CTP_API_URL`
-   - `CTP_SCOPE`
-   - `CTP_REGION`
+   - `PROJECT_KEY`
+   - `CLIENT_SECRET`
+   - `CLIENT_ID`
+   - `AUTH_URL`
+   - `API_URL`
+   - `SCOPE`
+   - `REGION`
 
 ### 6.2 Google Cloud Platform (GCP) Setup
 1. Create a project in GCP and enable Vision API and Generative AI.
@@ -112,13 +112,13 @@ Configure your `.env` file with the following details:
 #### Event Application
 ```plaintext
 # CommerceTools Credentials
-CTP_PROJECT_KEY=[Commercetools Composable Commerce project key]
-CTP_CLIENT_SECRET=[Commercetools Composable Commerce client secret]
-CTP_CLIENT_ID=[Commercetools Composable Commerce client ID]
-CTP_AUTH_URL=[https://auth.commercetools.com/oauth/token]
-CTP_API_URL=[https://api.commercetools.com]
-CTP_SCOPE=[manage_project:CTP_PROJECT_KEY]
-CTP_REGION=[Commercetools Composable Commerce API region]
+PROJECT_KEY=[Commercetools Composable Commerce project key]
+CLIENT_SECRET=[Commercetools Composable Commerce client secret]
+CLIENT_ID=[Commercetools Composable Commerce client ID]
+AUTH_URL=[https://auth.commercetools.com/oauth/token]
+API_URL=[https://api.commercetools.com]
+SCOPE=[manage_project:PROJECT_KEY]
+REGION=[Commercetools Composable Commerce API region]
 
 # Google Cloud Platform Credentials
 BASE64_ENCODED_GCP_SERVICE_ACCOUNT=[GCP Service Account in Base64 encoded format]
@@ -126,7 +126,7 @@ GEMINI_MODEL=[GEMINI_MODEL, example; [gemini-1.5-flash, gemini-2.0-pro]]
 GENERATIVE_AI_API_KEY=[GENERATIVE AI API KEY to access Gemini]
 
 #Commercetools Event Trigger 
-CTP_EVENT_TRIGGER_NAME=[Set the event trigger name. If there are multiple, separate them with commas. Supported triggers; [ProductVariantAdded, ProductImageAdded, ProductPublished]]
+EVENT_TRIGGER_NAME=[Set the event trigger name. If there are multiple, separate them with commas. Supported triggers; [ProductVariantAdded, ProductImageAdded, ProductPublished]]
 ```
 #### Merchant Center Custom Application
 ```plaintext

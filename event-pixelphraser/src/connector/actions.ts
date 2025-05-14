@@ -19,8 +19,8 @@ async function createSubscription(
   apiRoot: ByProjectKeyRequestBuilder,
   destination: Destination
 ) {
-  const eventTrigger: string[] = process.env.CTP_EVENT_TRIGGER_NAME
-    ? process.env.CTP_EVENT_TRIGGER_NAME.split(',')
+  const eventTrigger: string[] = process.env.EVENT_TRIGGER_NAME
+    ? process.env.EVENT_TRIGGER_NAME.split(',')
         .map((type) => type.trim())
         .filter((type) => type)
     : ['ProductCreated'];

@@ -7,26 +7,26 @@ deployAs:
       preUndeploy: npm install && npm run build && npm run connector:pre-undeploy
     configuration:
       standardConfiguration:
-        - key: CTP_REGION
+        - key: PROJECT_KEY
+          description: Commercetools Composable Commerce project key
+          required: true
+        - key: REGION
           description: Commercetools Composable Commerce API region
           required: true
           default: "europe-west1.gcp"
-        - key: CTP_EVENT_TRIGGER_NAME
+        - key: SCOPE
+          description: Commercetools Composable Commerce client scope
+          required: true
+        - key: CLIENT_ID
+          description: Commercetools Composable Commerce client ID
+          required: true
+        - key: EVENT_TRIGGER_NAME
           description: Set the event trigger name. If there are multiple, separate them with commas. Supported triggers; [ProductVariantAdded, ProductImageAdded, ProductPublished]
           required: true
           default: "ProductCreated"
       securedConfiguration:
-        - key: CTP_PROJECT_KEY
-          description: Commercetools Composable Commerce project key
-          required: true
-        - key: CTP_CLIENT_ID
-          description: Commercetools Composable Commerce client ID
-          required: true
-        - key: CTP_CLIENT_SECRET
+        - key: CLIENT_SECRET
           description: Commercetools Composable Commerce client secret
-          required: true
-        - key: CTP_SCOPE
-          description: Commercetools Composable Commerce client scope
           required: true
         - key: BASE64_ENCODED_GCP_SERVICE_ACCOUNT
           description: GCP Service Account in Base64 encoded format
