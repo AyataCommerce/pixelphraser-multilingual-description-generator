@@ -208,6 +208,10 @@ Watch the full walkthrough located in the [`demonstration_gif`](docs/demonstrati
 
 - PixelPhraser Configuration
 ![Configuration](docs\demonstration_gif\pixelphraser-configuration-gif.gif)
+- First
+![](docs\demonstration_gif\pixelphraser-configuration-gif.gif)
+- Second
+![](docs/demonstration_gif/pixelphraser-configuration-gif.gif)
 
 - PixelPhraser Workflow
 ![Workflow](docs\demonstration_gif\pixelphraser-workflow-gif.gif)
