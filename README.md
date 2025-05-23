@@ -213,18 +213,18 @@ Watch the full walkthrough located in the [`demonstration_gif`](docs/demonstrati
 
 ## <a id="gcp-service-account"></a> 13. Steps to Enable Cloud Vision API and Set up GCP Service Account
 
-### 1. Enable Cloud Vision API
+#### 1. Enable Cloud Vision API
 - Go to **Google Cloud Console** > **APIs & Services** > **Library**
 - Search for **"Cloud Vision API"**
 - Click **Enable**
 
-### 2. Create a Service Account
+#### 2. Create a Service Account
 - Go to **IAM & Admin** > **Service accounts** > **+ Create Service Account**
 - Enter the required details
 - Optionally, grant the **"Cloud Vision API User"** role (recommended)
 - Click **Done**
 
-### 3. Create an Access Key
+#### 3. Create an Access Key
 - Go to **IAM & Admin** > **Service accounts**
 - Select your service account
 - Go to the **"Keys"** tab
@@ -232,7 +232,7 @@ Watch the full walkthrough located in the [`demonstration_gif`](docs/demonstrati
 - Choose **"JSON"**, then click **Create**
 - Securely store the downloaded JSON file
 
-### 4. Convert the JSON Key File to Base64
+#### 4. Convert the JSON Key File to Base64
 ---
 
 This documentation provides a structured guide for setting up, operating, and uninstalling the PixelPhraser Connector for efficient product description automation in CommerceTools.
