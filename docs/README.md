@@ -17,14 +17,16 @@ Additionally, the generated descriptions are automatically translated into multi
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Features](#features)
-3. [Functional Overview](#functional-overview)
-4. [Application Workflow](#application-workflow)
-5. [Key Components](#key-components)
-6. [Prerequisites and Setup](#prerequisites-and-setup)
-7. [Running the Application Locally](#running-the-application-locally)
-8. [Uninstalling the Connector](#uninstalling-the-connector)
-9. [References](#references)
-10. [Demonstration](#demonstration)
+3. [Functional Overview](#architecture-diagram)
+4. [Architecture Diagram](#functional-overview)
+5. [Application Workflow](#application-workflow)
+6. [Technology Stack](#technology-stack)
+7. [Key Components](#key-components)
+8. [Prerequisites and Setup](#prerequisites-and-setup)
+9. [Running the Application Locally](#running-the-application-locally)
+10. [Uninstalling the Connector](#uninstalling-the-connector)
+11. [References](#references)
+12. [Demonstration](#demonstration)
 
 ---
 
@@ -68,11 +70,34 @@ This connector is designed to automate the generation of product descriptions ba
 7. **User  Interface for Review and Configuration:**
    - Customers can search for descriptions, view associated images, and accept or reject the generated content through a user-friendly interface. Additionally, this Custom Application allows customers to seamlessly configure the languages into which the descriptions are translated.
 
-## <a id="application-workflow"></a> 4. Application Workflow
-### Workflow Overview
-![Workflow Diagram](https://pixelphraser-ct-connector.s3.us-east-1.amazonaws.com/pixelphraser-flowdiagram.jpeg)
+## <a id="architecture-diagram"></a> 4. Architecture Diagram
+![Architecture Diagram](docs/architecture-diagram.png)
 
-## <a id="key-components"></a> 5. Key Components
+## <a id="application-workflow"></a> 5. Application Workflow
+1. **Product Event Trigger**  
+   When a product is created or updated in **Commercetools** **[A]**, events such as `ProductCreated`, `ProductImageAdded`, or `ProductVariantAdded` are triggered. These events produce a message that is sent to a configured **Pub/Sub** **[B]**.
+2. **Message Forwarding**  
+   The message from **Commercetools** **[A]** is forwarded by **Pub/Sub** **[B]** to the **Connector Controller** **[C]**.
+3. **Image URL Extraction & Vision AI Processing**  
+   The **Connector Controller** **[C]** extracts the image URL from the message data and sends it to **Vision AI** **[D]** for analysis.
+4. **Description Generation with Gemini**  
+   The analysis results from **Vision AI** **[D]** are sent to **Gemini** **[E]**, which generates product descriptions in the configured languages.
+5. **Storing Descriptions in Custom Objects**  
+   The generated descriptions from **Gemini** **[E]** are stored in **Commercetools Custom Objects** **[F]**.
+6. **Review in Merchant Center**  
+   Descriptions from **Custom Objects** **[F]** are fetched and displayed in the **Merchant Center Custom Application** **[G]** for review.
+7. **Final Save to Product Catalog**  
+   Once reviewed in the **Merchant Center Custom Application** **[G]**, the final descriptions are saved into the **Commercetools Product Catalog** **[H]**.
+
+## <a id="technology-stack"></a> 6. Technology Stack
+- Node.js  
+- TypeScript  
+- Google Cloud Pub/Sub  
+- Gemini  
+- Vision AI  
+- React.js  
+
+## <a id="key-components"></a> 7. Key Components
 ### Event Listener
 - **Functionality:** Listens for product publication events in CommerceTools. Receives the event payload, parses product details, and checks if the "generateDescription" flag is true. If the attribute is present and true, it triggers description generation; otherwise, it skips the process.
 ### Image Analysis with Vision AI
@@ -89,8 +114,8 @@ This connector is designed to automate the generation of product descriptions ba
 ### User  Interface for Review and Configuration
 - **Functionality:** Allows customers to review and approve or reject these AI-generated descriptions. Additionally, this Custom Application allows customers to seamlessly configure the languages into which the descriptions are translated.
 
-## <a id="prerequisites-and-setup"></a> 6. Prerequisites and Setup
-### 6.1 CommerceTools Account and API Keys
+## <a id="prerequisites-and-setup"></a> 8. Prerequisites and Setup
+### 8.1 CommerceTools Account and API Keys
 1. Navigate to **Settings > Developer settings > Create new API client**.
 2. Capture the following details:
    - `PROJECT_KEY`
@@ -101,13 +126,13 @@ This connector is designed to automate the generation of product descriptions ba
    - `SCOPE`
    - `REGION`
 
-### 6.2 Google Cloud Platform (GCP) Setup
+### 8.2 Google Cloud Platform (GCP) Setup
 1. Create a project in GCP and enable Vision API and Generative AI.
 2. Required credentials:
    - **Base64-encoded Service Account:** `BASE64_ENCODED_GCP_SERVICE_ACCOUNT`
    - **Generative AI API Key and Model:** `GENERATIVE_AI_API_KEY`, `GEMINI_MODEL`
 
-### 6.3 Environment Configuration
+### 8.3 Environment Configuration
 Configure your `.env` file with the following details:
 #### Event Application
 ```plaintext
@@ -137,7 +162,7 @@ ENABLE_NEW_JSX_TRANSFORM=["true"]
 FAST_REFRESH=["true" ]
 ```
 
-## <a id="running-the-application-locally"></a> 7. Running the Application Locally
+## <a id="running-the-application-locally"></a> 9. Running the Application Locally
 To set up and run PixelPhraser on your local machine:
 1. **Clone the Repository:**
    ```bash
@@ -162,18 +187,18 @@ To set up and run PixelPhraser on your local machine:
    ```
 This command initializes the application, enabling it to listen for product events and process them according to the setup flow.
 
-## <a id="uninstalling-the-connector"></a> 8. Uninstalling the Connector
+## <a id="uninstalling-the-connector"></a> 10. Uninstalling the Connector
 To uninstall the PixelPhraser Connector from your CommerceTools project:
 ### Method 1: Using the CommerceTools API
 - Send a DELETE request to the Custom Object's API endpoint. Refer to the [API Documentation for DELETE Requests](https://docs.commercetools.com/api/projects/subscriptions#delete-subscription).
 ### Method 2: Through Merchant Center
 - Navigate to **Settings > Developer settings** and remove the API client associated with PixelPhraser.
 
-## <a id="references"></a> 9. References
+## <a id="references"></a> 11. References
 - [CommerceTools Documentation](https://docs.commercetools.com/)
 - [Google Cloud Documentation](https://cloud.google.com/docs)
 
-## <a id="demonstration"></a> 10. Demonstration
+## <a id="demonstration"></a> 12. Demonstration
 Explore the visual and video materials that showcase how the **PixelPhraser – CommerceTools Connector** works in action.
 
 - Image Demonstrations
