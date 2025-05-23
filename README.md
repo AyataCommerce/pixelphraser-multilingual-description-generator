@@ -71,7 +71,7 @@ This connector is designed to automate the generation of product descriptions ba
 
 ## <a id="application-workflow"></a> 5. Application Workflow
 - PixelPhraser Workflow
-![Workflow](docs\demonstration_gif\pixelphraser-workflow-gif.gif)
+![Workflow](docs/demonstration_gif/pixelphraser-workflow-gif.gif)
 
 1. **Product Event Trigger**  
    When a product is created or updated in **Commercetools** **[A]**, events such as `ProductCreated`, `ProductImageAdded`, or `ProductVariantAdded` are triggered. These events produce a message that is sent to a configured **Pub/Sub** **[B]**.
@@ -207,14 +207,10 @@ Browse the collection of sample images in [`demonstration_images`](docs/demonstr
 Watch the full walkthrough located in the [`demonstration_gif`](docs/demonstration_gif) directory. 
 
 - PixelPhraser Configuration
-![Configuration](docs\demonstration_gif\pixelphraser-configuration-gif.gif)
-- First
-![](docs\demonstration_gif\pixelphraser-configuration-gif.gif)
-- Second
 ![](docs/demonstration_gif/pixelphraser-configuration-gif.gif)
 
 - PixelPhraser Workflow
-![Workflow](docs\demonstration_gif\pixelphraser-workflow-gif.gif)
+![](docs/demonstration_gif/pixelphraser-workflow-gif.gif)
 
 
 ---
