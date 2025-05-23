@@ -70,6 +70,9 @@ This connector is designed to automate the generation of product descriptions ba
 ![Architecture Diagram](docs/architecture-diagram.png)
 
 ## <a id="application-workflow"></a> 5. Application Workflow
+- PixelPhraser Configuration
+![](docs/demonstration_gif/pixelphraser-configuration-gif.gif)
+
 - PixelPhraser Workflow
 ![Workflow](docs/demonstration_gif/pixelphraser-workflow-gif.gif)
 
@@ -205,13 +208,6 @@ Browse the collection of sample images in [`demonstration_images`](docs/demonstr
 
 - Video Demonstration
 Watch the full walkthrough located in the [`demonstration_gif`](docs/demonstration_gif) directory. 
-
-- PixelPhraser Configuration
-![](docs/demonstration_gif/pixelphraser-configuration-gif.gif)
-
-- PixelPhraser Workflow
-![](docs/demonstration_gif/pixelphraser-workflow-gif.gif)
-
 
 ---
 
