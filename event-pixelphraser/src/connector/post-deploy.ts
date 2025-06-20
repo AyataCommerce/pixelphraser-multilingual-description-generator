@@ -1,3 +1,4 @@
+// event-pixelphraser\src\connector\post-deploy.ts
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -8,7 +9,7 @@ import { createGcpPubSubProductSubscription} from './actions';
 const CONNECT_GCP_TOPIC_NAME_KEY = 'CONNECT_GCP_TOPIC_NAME';
 const CONNECT_GCP_PROJECT_ID_KEY = 'CONNECT_GCP_PROJECT_ID';
 
-async function postDeploy(properties: Map<string, unknown>): Promise<void> {
+export async function postDeploy(properties: Map<string, unknown>): Promise<void> {
   
   const apiRoot = createApiRoot();
   const topicName = properties.get(CONNECT_GCP_TOPIC_NAME_KEY);

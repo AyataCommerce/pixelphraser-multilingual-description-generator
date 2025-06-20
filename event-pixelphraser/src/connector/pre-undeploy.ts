@@ -1,3 +1,4 @@
+// event-pixelphraser\src\connector\pre-undeploy.ts
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -5,7 +6,7 @@ import { createApiRoot } from '../client/create.client';
 import { assertError } from '../utils/assert.utils';
 import { deleteProductSubscription } from './actions';
 
-async function preUndeploy(): Promise<void> {
+export async function preUndeploy(): Promise<void> {
   const apiRoot = createApiRoot();
   await deleteProductSubscription(apiRoot);
 }
