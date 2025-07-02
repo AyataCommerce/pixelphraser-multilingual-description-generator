@@ -1,9 +1,17 @@
+// Set env variables before any imports
+process.env.BASE64_ENCODED_GCP_SERVICE_ACCOUNT = 'dummy-base64-service-account';
+process.env.GENERATIVE_AI_API_KEY = 'dummy-api-key';
+
 import { Request, Response } from 'express';
 import { post, processProductDescription } from '../../src/controllers/event.controller';
 import { fetchProduct } from '../../src/repository/product/fetchProductByID.repository';
 
+// Mocks
 jest.mock('../../src/client/create.client');
-jest.mock('../../src/config/ai.config');
+jest.mock('../../src/config/ai.config', () => ({
+    generativeAiModel: {}, // stub if required
+    initializeGenerativeAIClient: jest.fn()
+}));
 jest.mock('../../src/utils/logger.utils');
 jest.mock('../../src/utils/config.utils.ts', () => ({
     readConfiguration: jest.fn().mockReturnValue({
@@ -14,7 +22,6 @@ jest.mock('../../src/utils/config.utils.ts', () => ({
         REGION: "europe-west1.gcp"
     })
 }));
-
 jest.mock('../../src/repository/product/fetchProductByID.repository');
 
 import * as eventControllerModule from '../../src/controllers/event.controller';
