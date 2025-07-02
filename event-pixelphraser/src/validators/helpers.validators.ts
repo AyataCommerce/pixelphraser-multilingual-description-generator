@@ -4,7 +4,7 @@
 // @ts-nocheck
 
 import validator from 'validator';
-import { ValidatorCreator, Wrapper } from '../types/index.types';
+import { ValidatorCreator, Wrapper } from '../../event-pixelphraser/src/types/index.types';
 
 /**
  * File used to create helpers to validate the fields
